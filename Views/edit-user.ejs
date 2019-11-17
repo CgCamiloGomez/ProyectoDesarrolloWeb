@@ -1,0 +1,37 @@
+
+<% include partials/header.ejs %>
+<div class="container">
+    <% if (message) { %>
+    <p class="text-center text-danger"><%= message %></p>
+    <% } %>
+
+    <% if (usuario) { %>
+    <form class="add-user-form" action="" method="post">
+        <div class="form-group">
+            <div class="form-group col-md-4">
+                <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Nombres"
+                    value="<%= usuario.nombres %>" required>
+            </div>
+            <div class="form-group col-md-4">
+                <input type="text" class="form-control" name="apellido" id="apellido" placeholder="Apellidos"
+                    value="<%= usuario.apellidos %>" required>
+            </div>
+            <div class="form-group col-md-4">
+                <input type="text" class="form-control" name="email" id="email" placeholder="Correo electrónico"
+                    value="<%= usuario.email %>" required>
+            </div>
+            <div class="form-group col-md-4">
+                <input type="password" class="form-control" name="clave" id="clave" placeholder="clave"
+                    value="<%= usuario.clave %>" required>
+            </div>
+            <a href="/index" rel="noopener" class="btn btn-danger">Cancelar</a>
+            <button type="submit" class="btn btn-success">Actualizar usuario</button>
+        </div>
+    </form>
+    <% } else { %>
+    <p class="text-center">Usuario no encontrado. ir <a href="/usuarios/agregar">aquí</a> a agregar usuario.</p>
+    <% } %>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<% include partials/header.ejs %>
+<h1><%= tituloPag %></h1>
+<a href="/usuarios/agregar" class="btn btn-sm btn-primary">Agregar</a>
+
+<div class="table-wrapper">
+    <% if (usuarios.length > 0) {%>
+    <table class="table table-hovered">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Nombres</th>
+                <th scope="col">Apellido</th>
+                <th scope="col">Email</th>
+                <th scope="col">Accion</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% usuarios.forEach((usuario, index) => { %> <!--usarios es el listado de la consulta - el forech trae el resultado y el index la posicion-->
+            <tr>
+                <th scope="row"><%= usuario.id %></th>
+                <td><%= usuario.nombres %></td>
+                <td><%= usuario.apellidos %></td>
+                <td><%= usuario.email %></td>
+                <!-- <td><%= usuario.fecha_creacion%></td> -->
+                <!-- <td><%= usuario.estado == '1' ? 'AC' : 'IN' %></td> -->
+                <td>
+                    <a href="/usuarios/editar/<%= usuario.id %>" rel="noopener"
+                        class="btn btn-sm btn-success">Editar</a>
+                    <a href="" data-ref="/usuarios/eliminar/<%= usuario.id %>" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#confirm-delete">Eliminar</a>
+                </td>
+            </tr>
+            <% }) %>
+        </tbody>
+    </table>
+    <% } else { %>
+    <p class="text-center">Usuarios no encontrados. Ir <a href="/usuarios/agregar">aquí</a> para agregar usuarios</p>
+    <% } %>
+</div>
+
+<div class="modal fade" id="confirm-delete" tabindex="-1" 
+role="dialog" aria-labelledby="myModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                Confirma eliminación
+            </div>
+            <div class="modal-body">
+                ¿Está seguro de eliminar este registro?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                <a href="" class="btn btn-danger btn-ok">Eliminar</a>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+$('#confirm-delete').on('show.bs.modal', function(e) {
+    $(this).find('.btn-ok').attr('href', $(e.relatedTarget).data('ref'));
+});
+</script>
+</body>
+</html>

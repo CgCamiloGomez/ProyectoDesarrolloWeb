@@ -1,0 +1,28 @@
+<% include partials/header.ejs %>
+<div class="container">
+    <% if (message != '') { %>
+    <p class="text-left text-danger"><%= message %></p>
+    <% } %>
+    <form class="add-user-form" action="" method="post">
+        <div class="form-group">
+            <div class="form-group col-md-4">
+                <input type="text" class="form-control" name="nombres" id="nombres" placeholder="Nombres" required>
+            </div>
+            <div class="form-group col-md-4">
+                <input type="text" class="form-control" name="apellido" id="apellido" placeholder="Apellidos" required>
+            </div>
+            <div class="form-group col-md-4">
+                <input type="text" class="form-control" name="email" id="email" placeholder="Correo electrónico"
+                    required>
+            </div>
+            <div class="form-group col-md-4">
+                <input type="password" class="form-control" name="clave" id="clave" placeholder="clave" required>
+            </div>
+            <a href="/index" rel="noopener" class="btn btn-danger">Cancelar</a>
+            <button type="submit" class="btn btn-success">Agregar usuario</button>
+        </div>
+
+    </form>
+</div>
+</body>
+</html>
