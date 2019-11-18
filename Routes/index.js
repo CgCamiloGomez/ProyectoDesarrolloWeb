@@ -9,9 +9,9 @@ module.exports = {
 
             res.render('usuarios.ejs',
                 {
-                    title: 'Control usuarios | Ver Usuarios',
+                    title: 'Reservas | Ver Reservas',
                     usuarios: result,
-                    tituloPag: 'Usuarios'
+                    tituloPag: 'RESERVAS'
                 }); 
         });
     }
